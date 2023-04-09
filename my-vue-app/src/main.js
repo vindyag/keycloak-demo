@@ -10,6 +10,7 @@ let initOptions = {
     'public-client': true
 }
 
+//Create a new instance out of imported Keycloak library
 let keycloak = new Keycloak(initOptions)
 keycloak
     .init(
@@ -22,7 +23,7 @@ keycloak
         (auth) => {
             if (auth) {
                 console.log("Authenticated")
-                console.log(keycloak)
+                // User is authenticated, get the access token
                 createApp(App).mount('#app')
             } else {
                 console.error("Authentication failure")
