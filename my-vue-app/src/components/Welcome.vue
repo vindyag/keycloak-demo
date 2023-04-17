@@ -9,10 +9,11 @@
 import { fetchData } from '@/services/api';
 
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
   name: 'Welcome',
   data() {
     return {
-      message: '',
+      message: ''
     };
   },
   async created() {
