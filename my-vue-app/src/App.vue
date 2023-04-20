@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Welcome msg="Welcome to Your Vue.js App"/>
+  <NotePad msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import Welcome from './components/Welcome.vue'
+import NotePad from './components/NotePad.vue'
 
 export default {
   name: 'App',
   components: {
-    Welcome
+    NotePad
   }
 }
 </script>

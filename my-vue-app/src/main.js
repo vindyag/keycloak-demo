@@ -5,9 +5,10 @@ import Keycloak from 'keycloak-js'
 let initOptions = {
     url: 'http://localhost:8080/',
     realm: 'demo',
-    clientId: 'my-vue-app',
+    clientId: 'vue-client',
     onLoad: 'login-required',
-    'public-client': true
+    'public-client': true,
+    enableLogging: true
 }
 
 //Create a new instance out of imported Keycloak library
@@ -22,31 +23,24 @@ keycloak
     .then(
         (auth) => {
             if (auth) {
-                console.log("Authenticated")
-                // User is authenticated, get the access token
-                createApp(App).mount('#app')
+                console.log("Authenticated..")
+                onAuthSuccess(keycloak.token);
+
             } else {
-                console.error("Authentication failure")
-                window.location.reload()
+                console.error("Authentication failure.")
+                const loginOptions = {
+                    redirectUri: 'http://localhost:8080/'
+                }
+                keycloak.login(loginOptions)
             }
         })
     .catch(
-        () => {
-            console.error("Error while trying to login")
+        (err) => {
+            console.error("Error while trying to login." + err)
         })
 
-
-/*Vue.http.interceptors.push(function(request) {
-
-    // modify request
-    console.log(request)
-
-    // return response callback
-    return function(response) {
-
-        // modify response
-        console.log(response)
-
-    };
-});*/
-
+function onAuthSuccess(token) {
+    // User is authenticated, get the access token
+    console.log(token)
+    createApp(App).mount('#app')
+}
