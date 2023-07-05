@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {API_BASE_URL} from '@/config/config';
-import keycloak from 'keycloak-js';
+import keycloak from '@/auth/auth-keycloak.js';
 
 const api = axios.create(
     {
@@ -13,7 +13,7 @@ const api = axios.create(
 export async function fetchData() {
 // eslint-disable-next-line no-debugger
 debugger
-    const token = await keycloak.getToken()
+    const token = keycloak.token
     const response = await api.get('/notes', {
         headers: {
             Authorization: `Bearer ${token}`,

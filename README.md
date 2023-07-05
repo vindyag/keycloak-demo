@@ -1,6 +1,13 @@
 # keycloak-demo
 
-## Project setup
+## my-java-app Project setup
+
+```
+./gradlew bootRun
+```
+
+## my-vue-app Project setup
+
 ```
 yarn install
 ```
