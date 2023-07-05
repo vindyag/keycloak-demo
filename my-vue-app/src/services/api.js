@@ -12,7 +12,6 @@ const api = axios.create(
 
 export async function fetchData() {
 // eslint-disable-next-line no-debugger
-debugger
     const token = keycloak.token
     const response = await api.get('/notes', {
         headers: {
