@@ -14,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class NoteController {
 
     @GetMapping("/notes")
-    public ResponseEntity getNotes() {
+    public ResponseEntity<List<String>> getNotes() {
         List<String> notes = new ArrayList<>();
         notes.add("Note 1");
         notes.add("Note 2");

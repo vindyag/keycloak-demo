@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import {API_BASE_URL} from '@/config/config';
 import keycloak from '@/auth/auth-keycloak.js';

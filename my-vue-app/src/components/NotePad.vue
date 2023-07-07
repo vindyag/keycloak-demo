@@ -26,6 +26,7 @@ export default {
       if (data) {
         this.message = data;
       }
+      console.log('notes loading done..')
     }
   }
 
