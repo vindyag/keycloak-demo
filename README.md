@@ -8,6 +8,7 @@
 
 ## my-vue-app Project setup
 
+Start up Vue application using the Vue CLI development server
 ```
 yarn install
 ```

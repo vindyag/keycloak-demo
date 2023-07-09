@@ -1,11 +1,9 @@
 <template>
   <div class="welcome">
     <h1>Welcome</h1>
+    <a :href="loadNotes()" >View Notes</a>
     <p>{{ message }}</p>
 
-    <ul>
-      <li><a :href="loadNotes()" >View Notes</a></li>
-    </ul>
   </div>
 </template>
 
