@@ -1,3 +1,4 @@
+/*
 module.exports = {
   devServer: {
     port: 8081, // front end port
@@ -9,3 +10,5 @@ module.exports = {
     }
   }
 };
+
+*/

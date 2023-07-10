@@ -1,34 +1,32 @@
-/*
 package core.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
 
 @Configuration
-@EnableMethodSecurity
+@EnableWebSecurity
 public class Oauth2SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf()
-                .disable()
-                .cors() // Enable CORS support
-                .and()
-                .authorizeHttpRequests()
-                .requestMatchers(EndpointRequest.to("health", "info"))
-                .permitAll()
-                .requestMatchers("/**")
-                .fullyAuthenticated();
+                .cors(Customizer.withDefaults()) // Enable CORS support
+                .csrf().disable()
+                .authorizeHttpRequests(authorize ->
+                        authorize
+                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow pre-flight requests
+                                .anyRequest().permitAll() // Allow all other requests
+                );
+
         return http.build();
     }
-
 }
-
-*/
