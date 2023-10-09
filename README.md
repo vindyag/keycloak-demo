@@ -23,3 +23,9 @@ yarn serve --port 8081
 ```
 ./kc.sh start-dev
 ```
+
+### Start Keycloak Using Docker
+#### Build and run the Docker container
+```
+docker-compose up
+```

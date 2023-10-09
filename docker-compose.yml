@@ -1,0 +1,33 @@
+# https://docs.docker.com/compose/compose-file/compose-file-v3/ - prefer long syntax, it is easier to understand
+version: '3.8'
+services:
+  keycloak:
+    image: bitnami/keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/realm-export.json  # Path to import realm configuration
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=mysecretpassword
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./realm-export.json:/realm-export.json  # Mount realm-export.json into the container
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_DATABASE=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=mysecretpassword
+    ports:
+      - target: 5432
+        published: 5433
+        protocol: tcp
+        mode: host
+

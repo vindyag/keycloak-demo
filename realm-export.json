@@ -1,0 +1,19 @@
+{
+  "realm": "demo",
+  "enabled": true,
+  "users": [
+    {
+      "username": "vindya",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": false,
+      "email": "myuser@example.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "vindya"
+        }
+      ]
+    }
+  ]
+}
