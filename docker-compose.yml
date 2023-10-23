@@ -4,9 +4,11 @@ services:
   keycloak:
     image: bitnami/keycloak
     environment:
+      - KEYCLOAK_CREATE_ADMIN_USER= true
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
       - KEYCLOAK_IMPORT=/realm-export.json  # Path to import realm configuration
+      - KEYCLOAK_EXTRA_ARGS=-Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/realm-export.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING -Dkeycloak.migration.realmName=demo
       - DB_VENDOR=POSTGRES
       - DB_ADDR=postgres
       - DB_PORT=5432

@@ -3,7 +3,7 @@ import Keycloak from "keycloak-js";
 let initOptions = {
     url: 'http://localhost:8080/',
     realm: 'demo',
-    clientId: 'vue-client',
+    clientId: 'vue-app-client',
     onLoad: 'login-required',
     'public-client': true,
     enableLogging: true
