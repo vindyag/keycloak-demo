@@ -18,14 +18,19 @@ yarn install
 yarn serve --port 8081
 ```
 
-
 ### Start Keycloak
+Here we are using Docker to startup and configure Keycloak
+
+#### Clean up all Docker containers
 ```
-./kc.sh start-dev
+docker-compose down --volumes
 ```
 
-### Start Keycloak Using Docker
 #### Build and run the Docker container
 ```
 docker-compose up
 ```
+
+#### Credentials
+- Keycloak Admin Console UserName and Password - admin / admin
+- Vue App UserName and Password - vindya / vindya

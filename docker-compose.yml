@@ -10,18 +10,21 @@ services:
       - KEYCLOAK_IMPORT=/realm-export.json  # Path to import realm configuration
       - KEYCLOAK_EXTRA_ARGS=-Dkeycloak.migration.action=import -Dkeycloak.migration.provider=singleFile -Dkeycloak.migration.file=/realm-export.json -Dkeycloak.migration.strategy=OVERWRITE_EXISTING -Dkeycloak.migration.realmName=demo
       - DB_VENDOR=POSTGRES
-      - DB_ADDR=postgres
+      - DB_ADDR=keycloak-postgres-db
       - DB_PORT=5432
       - DB_DATABASE=keycloak
       - DB_USER=keycloak
       - DB_PASSWORD=mysecretpassword
     ports:
-      - "8080:8080"
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: host
     volumes:
       - ./realm-export.json:/realm-export.json  # Mount realm-export.json into the container
     depends_on:
-      - postgres
-  postgres:
+      - keycloak-postgres-db
+  keycloak-postgres-db:
     image: postgres
     environment:
       - POSTGRES_DATABASE=keycloak
