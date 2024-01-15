@@ -11,6 +11,7 @@ let initOptions = {
 
 
 export function authenticateUser(onAuthSuccess, onAuthError) {
+    console.info("in auth code.")
     keycloak
         .init(
             {

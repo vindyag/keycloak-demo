@@ -20,8 +20,9 @@ public class Oauth2SecurityConfig {
                 .csrf().disable()
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow pre-flight requests
-                                .anyRequest().permitAll() // Allow all other requests
+                                .requestMatchers(HttpMethod.OPTIONS).permitAll() // Allow pre-flight requests
+                                .requestMatchers("/actuator/health/**").permitAll() // Allow pre-flight requests
+                                .anyRequest().authenticated() // authenticate all other requests
                 );
 
         return http.build();
