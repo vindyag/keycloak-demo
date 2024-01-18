@@ -31,6 +31,12 @@ docker-compose down --volumes
 docker-compose up
 ```
 
+You can refer this blog post on [SPA Security with PKCE](https://medium.com/@vindya.gunawardena/spa-security-with-pkce-fb55af7d3f5) for more details.
+
+
+
 #### Credentials
-- Keycloak Admin Console UserName and Password - admin / admin
-- Vue App UserName and Password - vindya / vindya
+- Keycloak Admin Console UserName - `admin`
+- Vue App UserName - `vindya`
+
+_You can refer `.env` for passwords_
