@@ -13,7 +13,7 @@ services:
       - DB_ADDR=keycloak-postgres-db
       - DB_PORT=5432
       - DB_DATABASE=keycloak
-      - DB_USER=keycloakR
+      - DB_USER=keycloak
       - DB_PASSWORD=${KEYCLOAK_POSTGRES_PASSWORD}
     ports:
       - target: 8080
